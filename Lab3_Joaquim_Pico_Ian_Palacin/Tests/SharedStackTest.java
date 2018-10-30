@@ -127,7 +127,7 @@ public class SharedStackTest {
 
         assertEquals(humanStack1,humanStack2);
 
-        human4.name = "newName";
+        human4.name = "changedName";
 
         try{
             assertEquals(humanStack1.top().name,human4.name);
