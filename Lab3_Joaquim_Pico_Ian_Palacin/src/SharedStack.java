@@ -60,20 +60,20 @@ public class SharedStack<E> implements Stack<E> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean equals(Object obj) {
-        SharedStack<E> stack = (SharedStack<E>) obj;
-        Node<E> otherNode = stack.topOfStack;
-        Node<E> thisNode = this.topOfStack;
-        while (otherNode.next != null && thisNode.next != null) {
-            E otherElem = otherNode.elem;
-            E thisElem = thisNode.elem;
-            if((otherElem != null && thisElem == null || otherElem == null && thisElem != null
-                || otherElem != null && !(thisElem.equals((otherElem))))){
-                return false;
+            SharedStack<E> stack = (SharedStack<E>) obj;
+            Node<E> otherNode = stack.topOfStack;
+            Node<E> thisNode = this.topOfStack;
+            while (otherNode.next != null && thisNode.next != null) {
+                E otherElem = otherNode.elem;
+                E thisElem = thisNode.elem;
+                if((otherElem != null && thisElem == null || otherElem == null && thisElem != null
+                        || otherElem != null && !(thisElem.equals((otherElem))))){
+                    return false;
+                }
+                otherNode = otherNode.next;
+                thisNode = thisNode.next;
             }
-            otherNode = otherNode.next;
-            thisNode = thisNode.next;
-        }
-        return true;
+            return true;
     }
 
     /* We have chosen "//" as an element separator because
@@ -90,25 +90,7 @@ public class SharedStack<E> implements Stack<E> {
         }
         return string;
     }
-    /*@Override
-    public String toString(){
-        try {
-            String string = "//";
-            SharedStack<E> thisStack = this;
-            while (!isEmpty()) {
-                E elem = thisStack.top();
-                    if(elem == null){
-                        string = string + "null" + "//";
-                    }else{
-                        string = string + elem.toString() + "//";
-                    }
-                thisStack = thisStack.pop();
-            }
-            return string;
-        }catch(StackError e){
-            return "StackError: toString ";
-        }
-    }*/
+
 }
 
 

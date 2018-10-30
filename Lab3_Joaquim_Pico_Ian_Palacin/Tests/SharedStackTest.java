@@ -17,7 +17,12 @@ public class SharedStackTest {
 
     @Test
     public void push() {
-        assertEquals(true,sstack1.equals(sstack2));
+        sstack1 = sstack1.push(1);
+        sstack1 = sstack1.push(2);
+        sstack1 = sstack1.push(3);
+        sstack1 = sstack1.push(4);
+
+        System.out.print(sstack1.toString());
 
     }
 
@@ -69,7 +74,6 @@ public class SharedStackTest {
         sstack2 = sstack2.push(null);
 
         assertEquals(true,sstack1.equals(sstack2));
-
     }
     /* toString tests */
 
