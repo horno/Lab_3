@@ -63,15 +63,20 @@ public class SharedStack<E> implements Stack<E> {
             SharedStack<E> stack = (SharedStack<E>) obj;
             Node<E> otherNode = stack.topOfStack;
             Node<E> thisNode = this.topOfStack;
+            E otherElem;
+            E thisElem;
             while (otherNode.next != null && thisNode.next != null) {
-                E otherElem = otherNode.elem;
-                E thisElem = thisNode.elem;
-                if((otherElem != null && thisElem == null || otherElem == null && thisElem != null
-                        || otherElem != null && !(thisElem.equals((otherElem))))){
+                otherElem = otherNode.elem;
+                thisElem = thisNode.elem;
+                if(otherElem != null && thisElem == null || otherElem == null && thisElem != null
+                        || otherElem != null && !(thisElem.equals((otherElem)))){
                     return false;
                 }
                 otherNode = otherNode.next;
                 thisNode = thisNode.next;
+            }
+            if((otherNode.next == null && thisNode.next != null )||(otherNode.next != null && thisNode.next == null)){
+                return false;
             }
             return true;
     }
@@ -83,14 +88,18 @@ public class SharedStack<E> implements Stack<E> {
     public String toString() {
         String string = "//";
         Node<E> node = topOfStack;
+        E elem;
         while (node.next != null) {
-            E elem = node.elem;
-            string = string + elem.toString() + "//";
+            elem = node.elem;
+            if(node.elem == null){
+                string = string + "null" + "//";
+            }else{
+                string = string + elem.toString() + "//";
+            }
             node = node.next;
         }
         return string;
     }
-
 }
 
 
